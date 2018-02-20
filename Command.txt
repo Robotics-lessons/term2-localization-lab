@@ -1,0 +1,20 @@
+ROS command list:
+=================
+1. cd ~/catkin_ws
+2. source devel/setup.bash
+3. catkin_make --force-cmake
+
+4. roslaunch udacity_bot udacity_world.launch
+5. roslaunch udacity_bot amcl.launch
+6. rosrun udacity_bot navigation_goal
+
+7. rosclean check
+8. rosclean purge
+
+9.  roslaunch my_robot my_robot_world.launch
+10. roslaunch my_robot amcl.launch
+11. rosrun my_robot my_navigation_goal
+
+9.  roslaunch new_robot new_robot_world.launch
+10. roslaunch new_robot amcl.launch
+11. rosrun new_robot new_navigation_goal
