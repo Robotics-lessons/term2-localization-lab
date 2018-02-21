@@ -93,7 +93,7 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 
 ## Model Configuration
 ### The new_robot parameter list as:
-'''
+```
  * /amcl/base_frame_id: robot_footprint
  * /amcl/controller_frequency: 10.0
  * /amcl/global_frame_id: map
@@ -180,7 +180,7 @@ NODES
     move_base (move_base/move_base)
 
 ROS_MASTER_URI=http://localhost:11311
-...
+```
 
 ## Discussion
 
