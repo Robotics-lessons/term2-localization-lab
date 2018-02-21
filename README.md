@@ -4,8 +4,7 @@
 ## Abstract
 The two robots were created in the project, both robots started from a initial starting point, then utilized ROS packages to accurately localize a mobile robot inside a provided map in the Gazebo and RViz simulation environments. The sensors and AMCL (Adaptive Monte Carlo Localization) algorithm were used to locate current position, and search the path to navigate automatically to a predefined target position. The results for both the Classroom robot and the developed robot will be compared in this article.
 
-[image_0]: ./images/new_robot_result-w1.PNG
-![alt text][image_0] 
+<img src="images/new_robot_result-w1.PNG" width="30%" height="30%" title="Test result">
 
 ## Introduction
 The project forcus on following several aspects of robotics:
