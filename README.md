@@ -83,7 +83,7 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 | <img src="images/udacity_robot_w00.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w01.PNG" width="50%" height="25%" title="Starting new_robot"> |
  
 ### Testing results
-
+#### Both robots can arrive to the target position within reasonable time.
 | | udacity_bot | new_robot |
 | :---: | :---: | :---: |
 | Go a head | <img src="images/udacity_robot_w01.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w02.PNG" width="50%" height="23%" title="Starting new_robot"> |
@@ -181,13 +181,14 @@ NODES
 
 ROS_MASTER_URI=http://localhost:11311
 ```
-#### Several parameters were adjusted in the project and impacted mostly with performance:
+#### Several parameters were adjusted in the project and impacted robot performance:
 1. /amcl/max_particles: If it is too low, the robot will take more time to navigate, and this error: "Clearing costmap to unstuck robot" pops up.
 2. robot_radius: It it is too low, the robot will stuck on the wall without turning. If it is too high, the robot can turn into a cycle.
 3. raytrace_range: Set it little higher that can help the robot keeps inside the navigation path to the target.
-4. /move_base/controller_frequency: Set the lower value to eliminate the warning message "Control loop missed its desired rate of 20.0000Hz" 
+4. /move_base/controller_frequency: Set the lower value to eliminate the warning message "Control loop missed its desired rate of 20.0000Hz". This parameter doesn't impact robot performance, but it will reduce these unnecessary warning messages on the screen and in the log file.
 
 ## Discussion
+* Adjusting these parameters is a big challenge and time consuming job. There are so many parameters that can be changed, and they are related eachother. It is impossible that one person try all possible combination values for all parameters. A team work needs to assign 
 
 ## Future Work
 
