@@ -92,6 +92,95 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 | Average Time | 6 -7 munites | 4 -5 munites |
 
 ## Model Configuration
+### The new_robot parameter list as:
+'''
+ * /amcl/base_frame_id: robot_footprint
+ * /amcl/controller_frequency: 10.0
+ * /amcl/global_frame_id: map
+ * /amcl/initial_pose: 0 0 -0.785
+ * /amcl/laser_model_type: likelihood_field_...
+ * /amcl/max_particles: 240
+ * /amcl/min_particles: 30
+ * /amcl/odom_alpha1: 0.002
+ * /amcl/odom_alpha2: 0.002
+ * /amcl/odom_alpha3: 0.001
+ * /amcl/odom_alpha4: 0.001
+ * /amcl/odom_frame_id: odom
+ * /amcl/odom_model_type: diff-corrected
+ * /amcl/recovery_alpha_fast: 0.1
+ * /amcl/recovery_alpha_slow: 0.01
+ * /amcl/resample_interval: 1.0
+ * /amcl/transform_tolerance: 3.2
+ * /amcl/use_map_topic: True
+ * /move_base/TrajectoryPlannerROS/escape_vel: -0.1
+ * /move_base/TrajectoryPlannerROS/gdist_scale: 1.0
+ * /move_base/TrajectoryPlannerROS/heading_scoring_timestep: 0.8
+ * /move_base/TrajectoryPlannerROS/holonomic_robot: False
+ * /move_base/TrajectoryPlannerROS/latch_xy_goal_tolerance: False
+ * /move_base/TrajectoryPlannerROS/meter_scoring: True
+ * /move_base/TrajectoryPlannerROS/oscillation_reset_dist: 0.1
+ * /move_base/TrajectoryPlannerROS/pdist_scale: 0.8
+ * /move_base/TrajectoryPlannerROS/publish_cost_grid_pc: False
+ * /move_base/TrajectoryPlannerROS/sim_time: 3.0
+ * /move_base/TrajectoryPlannerROS/xy_goal_tolerance: 0.05
+ * /move_base/TrajectoryPlannerROS/yaw_goal_tolerance: 0.05
+ * /move_base/base_global_planner: navfn/NavfnROS
+ * /move_base/base_local_planner: base_local_planne...
+ * /move_base/controller_frequency: 5.0
+ * /move_base/global_costmap/global_frame: map
+ * /move_base/global_costmap/height: 40.0
+ * /move_base/global_costmap/inflation_radius: 0.2
+ * /move_base/global_costmap/laser_scan_sensor/clearing: True
+ * /move_base/global_costmap/laser_scan_sensor/data_type: LaserScan
+ * /move_base/global_costmap/laser_scan_sensor/marking: True
+ * /move_base/global_costmap/laser_scan_sensor/sensor_frame: hokuyo
+ * /move_base/global_costmap/laser_scan_sensor/topic: /new_robot/laser/...
+ * /move_base/global_costmap/map_type: costmap
+ * /move_base/global_costmap/observation_sources: laser_scan_sensor
+ * /move_base/global_costmap/obstacle_range: 5.0
+ * /move_base/global_costmap/publish_frequency: 2.0
+ * /move_base/global_costmap/raytrace_range: 9.0
+ * /move_base/global_costmap/resolution: 0.05
+ * /move_base/global_costmap/robot_base_frame: robot_footprint
+ * /move_base/global_costmap/robot_radius: 0.19
+ * /move_base/global_costmap/rolling_window: False
+ * /move_base/global_costmap/static_map: True
+ * /move_base/global_costmap/transform_tolerance: 0.4
+ * /move_base/global_costmap/update_frequency: 2.0
+ * /move_base/global_costmap/width: 40.0
+ * /move_base/local_costmap/global_frame: odom
+ * /move_base/local_costmap/height: 20.0
+ * /move_base/local_costmap/inflation_radius: 0.2
+ * /move_base/local_costmap/laser_scan_sensor/clearing: True
+ * /move_base/local_costmap/laser_scan_sensor/data_type: LaserScan
+ * /move_base/local_costmap/laser_scan_sensor/marking: True
+ * /move_base/local_costmap/laser_scan_sensor/sensor_frame: hokuyo
+ * /move_base/local_costmap/laser_scan_sensor/topic: /new_robot/laser/...
+ * /move_base/local_costmap/map_type: costmap
+ * /move_base/local_costmap/observation_sources: laser_scan_sensor
+ * /move_base/local_costmap/obstacle_range: 5.0
+ * /move_base/local_costmap/publish_frequency: 2.0
+ * /move_base/local_costmap/raytrace_range: 9.0
+ * /move_base/local_costmap/resolution: 0.05
+ * /move_base/local_costmap/robot_base_frame: robot_footprint
+ * /move_base/local_costmap/robot_radius: 0.19
+ * /move_base/local_costmap/rolling_window: True
+ * /move_base/local_costmap/static_map: False
+ * /move_base/local_costmap/transform_tolerance: 0.4
+ * /move_base/local_costmap/update_frequency: 2.0
+ * /move_base/local_costmap/width: 20.0
+ * /rosdistro: kinetic
+ * /rosversion: 1.12.12
+
+NODES
+  /
+    amcl (amcl/amcl)
+    map_odom_broadcaster (tf/static_transform_publisher)
+    map_server (map_server/map_server)
+    move_base (move_base/move_base)
+
+ROS_MASTER_URI=http://localhost:11311
+...
 
 ## Discussion
 
