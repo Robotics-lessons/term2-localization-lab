@@ -28,7 +28,7 @@ A predefined maze map was provided, and a C++ navigation goal program was coded 
 * ros-kinetic-amcl
 
 3. Using URDF (Unified Robot Description Format) to create the robot model which includes pose, inertial, collision and visual data.  
-the two sensors - a camera and a laser rangefinder (Hokuyo) was added in this URDF model.
+Two sensors - a camera and a laser rangefinder (Hokuyo) was added in this URDF model.
 
 4. Three Gazebo plugins were used to help utilize all available gazebo functionality in order to implement specific use-cases for specific models. They are:
 * A plugin for the camera sensor.
@@ -37,7 +37,7 @@ the two sensors - a camera and a laser rangefinder (Hokuyo) was added in this UR
 
 * A plugin for controlling the wheel joints.
 
-A xacro file under urdf folder, udacity_bot.gazebo, includes these three plugins
+  A xacro file under urdf folder, udacity_bot.gazebo, includes these three plugins
 
 5. A map created by Clearpath Robotics was used for both robots in the project.
 
