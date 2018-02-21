@@ -42,7 +42,7 @@ The robot performance is related a running environment directly, it is so import
 ### Software
 
 1. Using an Udacity ROS (Kinetic) package to create a robot simulation environment on VMWare machine. 
-This ROS includes Gazebo (7.10.0) and RViz (1.12.15) packages.
+This ROS includes Python (2.7), Gazebo (7.10.0) and RViz (1.12.15) packages.
 
 2. To build a testing simulation environment, these package need to install in ROS:
 * ros-kinetic-navigation
