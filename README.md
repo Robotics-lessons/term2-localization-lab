@@ -181,6 +181,11 @@ NODES
 
 ROS_MASTER_URI=http://localhost:11311
 ```
+#### Several parameters were adjusted in the project and impacted mostly with performance:
+1. /amcl/max_particles: If it is too low, the robot will take more time to navigate, and this error: "Clearing costmap to unstuck robot" pops up.
+2. robot_radius: It it is too low, the robot will stuck on the wall without turning. If it is too high, the robot can turn into a cycle.
+3. raytrace_range: Set it little higher that can help the robot keeps inside the navigation path to the target.
+4. /move_base/controller_frequency: Set the lower value to eliminate the warning message "Control loop missed its desired rate of 20.0000Hz" 
 
 ## Discussion
 
