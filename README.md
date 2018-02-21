@@ -80,11 +80,16 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 
 | udacity_bot | new_robot |
 | :---: | :---: |
-| <img src="images/udacity_robot_w00.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w01.PNG" width="40%" height="20%" title="Starting new_robot"> |
+| <img src="images/udacity_robot_w00.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w01.PNG" width="50%" height="25%" title="Starting new_robot"> |
  
-### udacity_bot testing result
+### Testing results
 
-### new_robot testing result
+| | udacity_bot | new_robot |
+| :---: | :---: | :---: |
+| Go a head | <img src="images/udacity_robot_w01.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w03.PNG" width="50%" height="25%" title="Starting new_robot"> |
+| Make a turn | <img src="images/udacity_robot_w03.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w04.PNG" width="50%" height="25%" title="Starting new_robot"> |
+| Arrived target | <img src="images/udacity_robot_w04.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w_result.PNG" width="50%" height="25%" title="Arrived target"> |
+| Average Time | 6 -7 munites | 4 -5 munites |
 
 ## Model Configuration
 
