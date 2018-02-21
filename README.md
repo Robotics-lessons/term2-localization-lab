@@ -42,7 +42,7 @@ The robot performance is related a running environment directly, it is so import
 ### Software
 
 1. Using an Udacity ROS (Kinetic) package to create a robot simulation environment on VMWare machine. 
-This ROS includes Gazebo (7.10.0) and RViz packages.
+This ROS includes Gazebo (7.10.0) and RViz (1.12.15) packages.
 
 2. To build a testing simulation environment, these package need to install in ROS:
 * ros-kinetic-navigation
@@ -67,7 +67,7 @@ Two sensors - a camera and a laser rangefinder (Hokuyo) was added in this URDF m
 
 5. A map created by Clearpath Robotics was used for both robots in the project.
 
-[image_1]: ./images/map.PNG
+[image_1]: (./images/map.PNG) {:height="50%" width="50%"}
 ![alt text][image_1] 
 
 6. AMCL (Adaptive Monte Carlo Localization) algorithm was used to dynamically adjust the number of particles over a period of time.
