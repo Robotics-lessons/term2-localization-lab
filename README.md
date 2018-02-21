@@ -75,6 +75,13 @@ Two sensors - a camera and a laser rangefinder (Hokuyo) was added in this URDF m
 8. There launch file: robot_description.launch, udacity_world.launch and amcl.launch under launch folder.
 
 ## Results
+### Testing scenario:
+Both robots used the same map with same starting (0 0 -0.785) and target (0.995 -2.99 0) position.
+
+<img src="images/new_robot_w01.PNG" width="30%" height="30%" title="Starting new_robot"> <img src="images/udacity_robot_w00.PNG" width="30%" height="30%" title="Starting udacity_bot">
+### udacity_bot testing result
+
+### new_robot testing result
 
 ## Model Configuration
 
