@@ -79,8 +79,8 @@ Two sensors - a camera and a laser rangefinder (Hokuyo) was added in this URDF m
 Both robots used the same map with same starting (0 0 -0.785) and target (0.995 -2.99 0) position.
 
 | udacity_bot | new_robot |
-| --- | --- |
-| <img src="images/udacity_robot_w00.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w01.PNG" width="60%" height="30%" title="Starting new_robot"> |
+| :---: | :---: |
+| <img src="images/udacity_robot_w00.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w01.PNG" width="56%" height="28%" title="Starting new_robot"> |
  
 ### udacity_bot testing result
 
