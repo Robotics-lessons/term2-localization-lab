@@ -67,8 +67,8 @@ Two sensors - a camera and a laser rangefinder (Hokuyo) was added in this URDF m
 
 5. A map created by Clearpath Robotics was used for both robots in the project.
 
-[image_1]: ./images/map.PNG <!-- .element height="50%" width="50%" -->
-![alt text][image_1]
+[image_1]: ./images/map.PNG
+![alt text][image_1] 
 
 6. AMCL (Adaptive Monte Carlo Localization) algorithm was used to dynamically adjust the number of particles over a period of time.
 
