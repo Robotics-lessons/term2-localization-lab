@@ -31,13 +31,13 @@ The robot performance is related a running environment directly, it is so import
      
 ### Virual Machine:
 
-   VMware Workstation 12 Pro, version 12.5.6
+     VMware Workstation 12 Pro, version 12.5.6
    
-   Processor: 2
+     Processor: 2
    
-   Memory: 8GB
+     Memory: 8GB
    
-   Hard Disk: 40 GB
+     Hard Disk: 40 GB
    
 ### Software
 
@@ -66,6 +66,7 @@ Two sensors - a camera and a laser rangefinder (Hokuyo) was added in this URDF m
   A xacro file under urdf folder, udacity_bot.gazebo, includes these three plugins
 
 5. A map created by Clearpath Robotics was used for both robots in the project.
+
 [image_1]: ./images/map.PNG
 ![alt text][image_1] 
 
