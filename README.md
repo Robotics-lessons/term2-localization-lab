@@ -19,7 +19,20 @@ Both robots need to use sensors such as a camera or Lidar (Light Detection and R
 A predefined maze map was provided, and a C++ navigation goal program was coded to give a navugation goal position. 
 
 ## Background
-1. Using an Udacity ROS package to create a robot simulation environment on VMWare machine. This ROS includes Gazebo and RViz packages.
+The robot performance is related a running environment directly, it is so important which hardware and virtual machine configuration were used in this project.
+Hardware:
+   Computer model: Surface Pro 4
+   Processor: Intel i7-6650U CPU @ 2.20GHz @2.21GHz
+   RAM: 16GB
+   Operation System: Window 10 Pro
+Virual Machine:
+   VMware Workstation 12 Pro, version 12.5.6
+   Processor: 2
+   Memory: 8GB
+   Hard Disk: 40 GB
+
+1. Using an Udacity ROS (Kinetic) package to create a robot simulation environment on VMWare machine. 
+This ROS includes Gazebo (7.10.0) and RViz packages.
 
 2. To build a testing simulation environment, these package need to install in ROS:
 * ros-kinetic-navigation
