@@ -188,7 +188,10 @@ ROS_MASTER_URI=http://localhost:11311
 4. /move_base/controller_frequency: Set the lower value to eliminate the warning message "Control loop missed its desired rate of 20.0000Hz". This parameter doesn't impact robot performance, but it will reduce these unnecessary warning messages on the screen and in the log file.
 
 ## Discussion
-* Adjusting these parameters is a big challenge and time consuming job. There are so many parameters that can be changed, and they are related eachother. It is impossible that one person try all possible combination values for all parameters. A team work needs to assign 
+* Adjusting these parameters is a big challenge and time consuming job. There are so many parameters that can be changed, and they are related eachother. It is impossible that one person try all possible combination values for all parameters in limited time. A team work needs to assign for achieving the best result.
+* AMCL would'n work well for the kidnapped robot problem, when this error: "Clearing costmap to unstuck robot" happened, the robot couldn't locate its current location to continue navigating to target.
+* A moving robot with MCL/AMCl algorithm can be used warehouse industry to move and delivery good inside the warehouse. This job and working environment have clear start and end positions. 
+
 
 ## Future Work
 
