@@ -191,7 +191,9 @@ ROS_MASTER_URI=http://localhost:11311
 * Adjusting these parameters is a big challenge and time consuming job. There are so many parameters that can be changed, and they are related eachother. It is impossible that one person try all possible combination values for all parameters in limited time. A team work needs to assign for achieving the best result.
 * AMCL would'n work well for the kidnapped robot problem, when this error: "Clearing costmap to unstuck robot" happened, the robot couldn't locate its current location to continue navigating to target.
 * A moving robot with MCL/AMCl algorithm can be used warehouse industry to move and delivery good inside the warehouse. This job and working environment have clear start and end positions. 
-
+ 
 
 ## Future Work
+* Both robots started forward to dead end direction, then turn back to reverse point. The algorithm may need to improve to avoid this issue.
+* Adjusting and trying different parameters are very man power cost work, a database can be biult to store these test and result data to help to develp new rotot, and use Deep Learning technology to figure out and generate them automatically.
 
