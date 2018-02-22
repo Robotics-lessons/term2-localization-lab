@@ -188,12 +188,12 @@ ROS_MASTER_URI=http://localhost:11311
 4. /move_base/controller_frequency: Set the lower value to eliminate the warning message "Control loop missed its desired rate of 20.0000Hz". This parameter doesn't impact robot performance, but it will reduce these unnecessary warning messages on the screen and in the log file.
 
 ## Discussion
-* Adjusting these parameters is a big challenge and time consuming job. There are so many parameters that can be changed, and they are related eachother. It is impossible that one person try all possible combination values for all parameters in limited time. A team work needs to assign for achieving the best result.
+* Adjusting the parameter is a big challenge and time consuming job. Those parameters can be changed independently, but they are related eachother. It is impossible that one person tries all possible combination values for all parameters in limited time. A team work needs to assign for achieving the best result.
 * AMCL would'n work well for the kidnapped robot problem, when this error: "Clearing costmap to unstuck robot" happened, the robot couldn't locate its current location to continue navigating to target.
 * A moving robot with MCL/AMCl algorithm can be used warehouse industry to move and delivery good inside the warehouse. This job and working environment have clear start and end positions. 
  
 
 ## Future Work
-* Both robots started forward to dead end direction, then turn back to reverse point. The algorithm may need to improve to avoid this issue.
-* Adjusting and trying different parameters are very man power cost work, a database can be biult to store these test and result data to help to develp new rotot, and use Deep Learning technology to figure out and generate them automatically.
+* Both robots started forward to dead end direction, then turned back to reverse point. The algorithm can improve to avoid this issue.
+* Adjusting and trying different parameters are very man power cost work, a database can be biult to store these test and result data to help develping a new rotot, and use Deep Learning technology to figure out and generate these parameters automatically.
 
