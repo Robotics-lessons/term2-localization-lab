@@ -12,7 +12,12 @@ The project forcus on following several aspects of robotics:
 * Creating a ROS package that launches a custom robot model in a Gazebo world and utilizes packages like AMCL and the Navigation Stack.
 * Exploring, adding, and tuning specific parameters corresponding to each package to achieve the best possible localization results.
 
-The project created two robots: one is benchmark robot (called: udacity_bot) given as part of the project, the second one (called: new_robot) was created by auther.
+### The project created two robots: 
+* One is benchmark robot (called: udacity_bot) given as part of the project, 
+* The second one (called: new_robot) was created by auther.
+
+<img src="images/new_robot_model.PNG" width="60%" height="60%" title="New robot model">
+
 Both robots need to use sensors such as a camera or Lidar (Light Detection and Ranging) and AMCL algorithm package. 
 
 A predefined maze map was provided, and a C++ navigation goal program was coded to give a navugation goal position. 
@@ -86,9 +91,9 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 #### Both robots can arrive to the target position within reasonable time.
 | | udacity_bot | new_robot |
 | :---: | :---: | :---: |
-| Go a head | <img src="images/udacity_robot_w01.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w02.PNG" width="50%" height="23%" title="Starting new_robot"> |
-| Make a turn | <img src="images/udacity_robot_w02.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w04.PNG" width="50%" height="23%" title="Starting new_robot"> |
-| Arrived target | <img src="images/udacity_robot_w04.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w_result.PNG" width="50%" height="23%" title="Arrived target"> |
+| Go a head | <img src="images/udacity_robot_w01.PNG" width="60%" height="30%" title="Go udacity_bot"> | <img src="images/new_robot_w02.PNG" width="50%" height="23%" title="Go new_robot"> |
+| Make a turn | <img src="images/udacity_robot_w02.PNG" width="60%" height="30%" title="Make a turn udacity_bot"> | <img src="images/new_robot_w04.PNG" width="50%" height="23%" title="Make a turn new_robot"> |
+| Arrived target | <img src="images/udacity_robot_w04.PNG" width="60%" height="30%" title="Arrived target udacity_bot"> | <img src="images/new_robot_w_result.PNG" width="50%" height="23%" title="Arrived target new robot"> |
 | Average Time | 6 -7 munites | 4 -5 munites |
 
 ## Model Configuration
