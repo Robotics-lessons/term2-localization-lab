@@ -16,7 +16,7 @@ The project forcus on following several aspects of robotics:
 * One is benchmark robot (called: udacity_bot) given as part of the project, 
 * The second one (called: new_robot) was created by auther.
 
-<img src="images/new_robot_model.PNG" width="60%" height="60%" title="New robot model">
+<img src="images/new_robot_model.PNG" width="40%" height="40%" title="New robot model">
 
 Both robots need to use sensors such as a camera or Lidar (Light Detection and Ranging) and AMCL algorithm package. 
 
