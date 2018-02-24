@@ -78,6 +78,7 @@ Monte Carlo simulations is an algorithm for robots to localize using a particle 
   ​
 
 3. Compare Monte Carlo Simulations vs. Extend Kalman Filters
+
 |    | MCL | EKF |
 | :--- | :---: | :---: |
 | Measurements | Raw Measurements | Landmarks |
