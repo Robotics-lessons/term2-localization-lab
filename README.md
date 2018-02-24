@@ -24,6 +24,10 @@ Both robots need to use sensors such as a camera or Lidar (Light Detection and R
 A predefined maze map was provided, and a C++ navigation goal program was coded to give a navigation goal position. 
 
 ## Background
+Consider a robot with an internal map of its environment. When the robot moves around, it needs to know where it is within this map. Determining its location and rotation (more generally, the pose) by using its sensor observations is known as robot localization.
+
+Because the robot may not always behave in a perfectly predictable way, it generates many random guesses of where it is going to be next. These guesses are known as particles. Each particle contains a full description of a possible future state. When the robot observes the environment, it discards particles inconsistent with this observation, and generates more particles close to those that appear consistent. In the end, hopefully most particles converge to where the robot actually is[4].
+
 The robot performance is related a running environment directly, it is so important which hardware and virtual machine configuration were used in this project.
 ### Hardware:
      Computer model: Surface Pro 4
@@ -62,13 +66,14 @@ Two sensors - a camera and a laser rangefinder (Hokuyo)[1] was added in this URD
 
 ####  Kalman Filters and Monte Carlo Simulations are two most common algorithms for robot localization:
 1. Kalman Filters and EKF
-  Kalman filters is a algorithm that uses a series of measurements observed over time, containing statistical noise and other inaccuracies, and produces estimates of unknown variables that tend to be more accurate than those based on a single measurement alone, by estimating a joint probability distribution over the variables for each timeframe[3]. 
-  EKF (Extend Kalman Filters)  is the nonlinear version of the Kalman filter which linearizes about an estimate of the current mean and covariance. In the case of well defined transition models, the EKF has been considered the de facto standard in the theory of nonlinear state estimation, navigation systems and GPS[4].
+  The algorithm works in a two-step process. In the prediction step, the Kalman filter produces estimates of the current state variables, along with their uncertainties. Once the outcome of the next measurement (necessarily corrupted with some amount of error, including random noise) is observed, these estimates are updated using a weighted average, with more weight being given to estimates with higher certainty. The algorithm is recursive. It can run in real time, using only the present input measurements and the previously calculated state and its uncertainty matrix; no additional past information is required.
 
-  ​
+Using a Kalman filter does not assume that the errors are Gaussian. However, the filter yields the exact conditional probability estimate in the special case that all errors are Gaussian-distributed.
+
+Extensions and generalizations to the method have also been developed, such as the extended Kalman filter and the unscented Kalman filter which work on nonlinear systems. The underlying model is similar to a hidden Markov model except that the state space of the latent variables is continuous and all latent and observed variables have Gaussian distributions.[4].
 
 2. Monte Carlo Simulations
-  Monte Carlo simulations are used to model the probability of different outcomes in a process that cannot easily be predicted due to the intervention of random variables. It is a technique used to understand the impact of risk and uncertainty in prediction and forecasting models[5].
+Monte Carlo simulations is an algorithm for robots to localize using a particle filter. Given a map of the environment, the algorithm estimates the position and orientation of a robot as it moves and senses the environment. The algorithm uses a particle filter to represent the distribution of likely states, with each particle representing a possible state, i.e., a hypothesis of where the robot is. The algorithm typically starts with a uniform random distribution of particles over the configuration space, meaning the robot has no information about where it is and assumes it is equally likely to be at any point in space. Whenever the robot moves, it shifts the particles to predict its new state after the movement. Whenever the robot senses something, the particles are resampled based on recursive Bayesian estimation, i.e., how well the actual sensed data correlate with the predicted state. Ultimately, the particles should converge towards the actual position of the robot.[5].
 
   ​
 
@@ -86,6 +91,8 @@ Two sensors - a camera and a laser rangefinder (Hokuyo)[1] was added in this URD
 | Memory & Resolution Control | Yes | No |
 | Global Localization | Yes | No |
 | State Space | Multimodel Discrete | Unimodel Continuous |
+
+
 
 
 
@@ -107,104 +114,59 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 | Average Time | 6 -7 munites | 4 -5 munites |
 
 ## Model Configuration
-### The new_robot parameter list as:
-```
- * /amcl/base_frame_id: robot_footprint
- * /amcl/controller_frequency: 10.0
- * /amcl/global_frame_id: map
- * /amcl/initial_pose: 0 0 -0.785
- * /amcl/laser_model_type: likelihood_field_...
+### These parameters were adjusted in the project to improve the robot performance:
+
+ * /amcl/laser_model_type: likelihood_field_prob
+ = (string, default: "likelihood_field") Which model to use, either beam, likelihood_field, or likelihood_field_prob (same as likelihood_field but incorporates the beamskip feature, if enabled)[5].
+ #### Used likelihood_field_prob, make laser sensor has beamskip feature.
+
  * /amcl/max_particles: 240
+ =  (int, default: 5000) Maximum allowed number of particles.
  * /amcl/min_particles: 30
- * /amcl/odom_alpha1: 0.002
- * /amcl/odom_alpha2: 0.002
- * /amcl/odom_alpha3: 0.001
- * /amcl/odom_alpha4: 0.001
- * /amcl/odom_frame_id: odom
- * /amcl/odom_model_type: diff-corrected
- * /amcl/recovery_alpha_fast: 0.1
- * /amcl/recovery_alpha_slow: 0.01
+ = (int, default: 100) Minimum allowed number of particles[5].
+ #### Adjusted these two value lower to reduce CPU usage and improve performance.
+
  * /amcl/resample_interval: 1.0
+ = (int, default: 2) Number of filter updates required before resampling[5].
+ #### Set a lower value to improve performance.
+
  * /amcl/transform_tolerance: 3.2
- * /amcl/use_map_topic: True
- * /move_base/TrajectoryPlannerROS/escape_vel: -0.1
- * /move_base/TrajectoryPlannerROS/gdist_scale: 1.0
- * /move_base/TrajectoryPlannerROS/heading_scoring_timestep: 0.8
- * /move_base/TrajectoryPlannerROS/holonomic_robot: False
- * /move_base/TrajectoryPlannerROS/latch_xy_goal_tolerance: False
- * /move_base/TrajectoryPlannerROS/meter_scoring: True
- * /move_base/TrajectoryPlannerROS/oscillation_reset_dist: 0.1
- * /move_base/TrajectoryPlannerROS/pdist_scale: 0.8
- * /move_base/TrajectoryPlannerROS/publish_cost_grid_pc: False
+ =  (int, default: 2) Number of filter updates required before resampling[5].
+ #### Set the value higher to improve localization accuracy.
+
  * /move_base/TrajectoryPlannerROS/sim_time: 3.0
+ = (double, default: 1.0) The amount of time to forward-simulate trajectories in seconds[5].
+ #### Set higher value to speed up robot navigation.
+
  * /move_base/TrajectoryPlannerROS/xy_goal_tolerance: 0.05
- * /move_base/TrajectoryPlannerROS/yaw_goal_tolerance: 0.05
- * /move_base/base_global_planner: navfn/NavfnROS
- * /move_base/base_local_planner: base_local_planne...
+ = (double, default: 0.10) The tolerance in meters for the controller in the x & y distance when achieving a goal[5].
+ #### Reduce the value to increase the challenge to achiev a goal
+
  * /move_base/controller_frequency: 5.0
- * /move_base/global_costmap/global_frame: map
- * /move_base/global_costmap/height: 40.0
- * /move_base/global_costmap/inflation_radius: 0.2
- * /move_base/global_costmap/laser_scan_sensor/clearing: True
- * /move_base/global_costmap/laser_scan_sensor/data_type: LaserScan
- * /move_base/global_costmap/laser_scan_sensor/marking: True
- * /move_base/global_costmap/laser_scan_sensor/sensor_frame: hokuyo
- * /move_base/global_costmap/laser_scan_sensor/topic: /new_robot/laser/...
- * /move_base/global_costmap/map_type: costmap
- * /move_base/global_costmap/observation_sources: laser_scan_sensor
- * /move_base/global_costmap/obstacle_range: 5.0
- * /move_base/global_costmap/publish_frequency: 2.0
+ = (double, default: 20.0) The frequency at which this controller will be called in Hz. Uses searchParam to read the parameter from parent namespaces if not set in the namespace of the controller. For use with move_base, this means that you only need to set its "controller_frequency" parameter and can safely leave this one unset[5]. 
+ #### Set the lower value to eliminate the warning message "Control loop missed its desired rate of 20.0000Hz". This parameter doesn't impact robot performance, but it will reduce these unnecessary warning messages on the screen and in the log file.
+
  * /move_base/global_costmap/raytrace_range: 9.0
- * /move_base/global_costmap/resolution: 0.05
- * /move_base/global_costmap/robot_base_frame: robot_footprint
- * /move_base/global_costmap/robot_radius: 0.19
- * /move_base/global_costmap/rolling_window: False
- * /move_base/global_costmap/static_map: True
- * /move_base/global_costmap/transform_tolerance: 0.4
- * /move_base/global_costmap/update_frequency: 2.0
- * /move_base/global_costmap/width: 40.0
- * /move_base/local_costmap/global_frame: odom
- * /move_base/local_costmap/height: 20.0
- * /move_base/local_costmap/inflation_radius: 0.2
- * /move_base/local_costmap/laser_scan_sensor/clearing: True
- * /move_base/local_costmap/laser_scan_sensor/data_type: LaserScan
- * /move_base/local_costmap/laser_scan_sensor/marking: True
- * /move_base/local_costmap/laser_scan_sensor/sensor_frame: hokuyo
- * /move_base/local_costmap/laser_scan_sensor/topic: /new_robot/laser/...
- * /move_base/local_costmap/map_type: costmap
- * /move_base/local_costmap/observation_sources: laser_scan_sensor
- * /move_base/local_costmap/obstacle_range: 5.0
- * /move_base/local_costmap/publish_frequency: 2.0
  * /move_base/local_costmap/raytrace_range: 9.0
- * /move_base/local_costmap/resolution: 0.05
- * /move_base/local_costmap/robot_base_frame: robot_footprint
+ = (double, default: 3.0) The maximum range in meters at which to raytrace out obstacles from the map using sensor data[5].
+ #### Used higher value to increase sensor detecting obstacles distance
+
+ * /move_base/global_costmap/robot_radius: 0.19
  * /move_base/local_costmap/robot_radius: 0.19
- * /move_base/local_costmap/rolling_window: True
- * /move_base/local_costmap/static_map: False
+ = (double, default: 0.46)  The radius of the robot in meters, this parameter should only be set for circular robots, all others should use the "footprint" parameter[5].
+ #### Set a lower value to match the project robot size.
+
+ * /move_base/global_costmap/transform_tolerance: 0.4
  * /move_base/local_costmap/transform_tolerance: 0.4
- * /move_base/local_costmap/update_frequency: 2.0
- * /move_base/local_costmap/width: 20.0
- * /rosdistro: kinetic
- * /rosversion: 1.12.12
+ =  (double, default: 0.2) Specifies the delay in transform (tf) data that is tolerable in seconds. This parameter serves as a safeguard to losing a link in the tf tree while still allowing an amount of latency the user is comfortable with to exist in the system[5].
+ #### Set a little higher value to increase the system tolerable.
 
-NODES
-  /
-    amcl (amcl/amcl)
-    map_odom_broadcaster (tf/static_transform_publisher)
-    map_server (map_server/map_server)
-    move_base (move_base/move_base)
-
-ROS_MASTER_URI=http://localhost:11311
-```
-#### Several parameters were adjusted in the project and impacted robot performance:
-1. /amcl/max_particles: If it is too low, the robot will take more time to navigate, and this error: "Clearing costmap to unstuck robot" pops up.
-2. robot_radius: It it is too low, the robot will stuck on the wall without turning. If it is too high, the robot can turn into a cycle.
-3. raytrace_range: Set it little higher that can help the robot keeps inside the navigation path to the target.
-4. /move_base/controller_frequency: Set the lower value to eliminate the warning message "Control loop missed its desired rate of 20.0000Hz". This parameter doesn't impact robot performance, but it will reduce these unnecessary warning messages on the screen and in the log file.
 
 ## Discussion
 * Adjusting the parameter is a big challenge and time consuming job. Those parameters can be changed independently, but they are related eachother. It is impossible that one person tries all possible combination values for all parameters in limited time. A team work needs to assign for achieving the best result.
+
 * AMCL would'n work well for the kidnapped robot problem, when this error: "Clearing costmap to unstuck robot" happened, the robot abruptly disappeared from one location and showed up in another position.
+
 * A moving robot with MCL/AMCl algorithm can be used warehouse industry to move and delivery good inside the warehouse. This job and working environment have clear start and end positions. 
 
 
@@ -216,8 +178,12 @@ ROS_MASTER_URI=http://localhost:11311
 
 ## Reference
 [1] ClearPathRobotics,“Clearpath robotics home page.”https://www.clearpathrobotics.com, 2018.
+
 [2] Hokuyo, “Hokuyo laser scanner home page.” https://www.hokuyo-aut.jp, 2018.
+
 [3] Wikipedia, "Kalman filter" https://en.wikipedia.org/wiki/Kalman_filter 2018
-[4] Wikipedia, "Extended Kalman filter" https://en.wikipedia.org/wiki/Extended_Kalman_filter  2018
-[5] Investopedia, "Monte Carlo Simulation"  https://www.investopedia.com/terms/m/montecarlosimulation.asp#ixzz57zwEirv5 2018
+
+[4] Wikipedia, "Monte Carlo localization" https://en.wikipedia.org/wiki/Monte_Carlo_localization 2018
+
+[5] wiki.ROS.ORG, "Documentation" http://wiki.ros.org/  2018
 
