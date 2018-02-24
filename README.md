@@ -7,7 +7,8 @@ The two robots were created in the project, both robots started from a initial s
 <img src="images/new_robot_result-w1.PNG" width="60%" height="60%" title="Test result">
 
 ## Introduction
-The project forcus on following several aspects of robotics:
+The project focuses on the following several aspects of robotics:
+
 * Building a mobile robot for simulated tasks.
 * Creating a ROS package that launches a custom robot model in a Gazebo world and utilizes packages like AMCL and the Navigation Stack.
 * Exploring, adding, and tuning specific parameters corresponding to each package to achieve the best possible localization results.
@@ -16,68 +17,77 @@ The project forcus on following several aspects of robotics:
 * One is benchmark robot (called: udacity_bot) given as part of the project, 
 * The second one (called: new_robot) was created by auther.
 
-<img src="images/new_robot_model.PNG" width="40%" height="40%" title="New robot model">
+<img src="images/new_robot_model_w.PNG" width="40%" height="40%" title="New robot model">
 
 Both robots need to use sensors such as a camera or Lidar (Light Detection and Ranging) and AMCL algorithm package. 
 
-A predefined maze map was provided, and a C++ navigation goal program was coded to give a navugation goal position. 
+A predefined maze map was provided, and a C++ navigation goal program was coded to give a navigation goal position. 
 
 ## Background
 The robot performance is related a running environment directly, it is so important which hardware and virtual machine configuration were used in this project.
 ### Hardware:
      Computer model: Surface Pro 4
-     
+
      Processor: Intel i7-6650U CPU @ 2.20GHz @2.21GHz
-     
+
      RAM: 16GB
-     
+
      Operation System: Window 10 Pro
-     
+
 ### Virual Machine:
 
      VMware Workstation 12 Pro, version 12.5.6
-   
+
      Processor: 2
-   
+
      Memory: 8GB
-   
+
      Hard Disk: 40 GB
-   
+
 ### Software
 
 1. Using an Udacity ROS (Kinetic) package to create a robot simulation environment on VMWare machine. 
 This ROS includes Python (2.7), Gazebo (7.10.0) and RViz (1.12.15) packages.
 
-2. To build a testing simulation environment, these package need to install in ROS:
-* ros-kinetic-navigation
+2. Using URDF (Unified Robot Description Format) to create the robot model which includes pose, inertial, collision and visual data.  
+Two sensors - a camera and a laser rangefinder (Hokuyo)[1] was added in this URDF model.
 
-* ros-kinetic-map-server
-
-* ros-kinetic-move-base
-
-* ros-kinetic-amcl
-
-3. Using URDF (Unified Robot Description Format) to create the robot model which includes pose, inertial, collision and visual data.  
-Two sensors - a camera and a laser rangefinder (Hokuyo) was added in this URDF model.
-
-4. Three Gazebo plugins were used to help utilize all available gazebo functionality in order to implement specific use-cases for specific models. They are:
-* A plugin for the camera sensor.
-
-* A plugin for the hokuyo sensor.
-
-* A plugin for controlling the wheel joints.
-
-  A xacro file under urdf folder, udacity_bot.gazebo, includes these three plugins
-
-5. A map created by Clearpath Robotics was used for both robots in the project.
+3. A map created by Clearpath Robotics[2]  was used for both robots in the project.
 
 <img src="images/map.PNG" width="30%" height="30%" title="Maze Map">
 
-6. AMCL (Adaptive Monte Carlo Localization) algorithm was used to dynamically adjust the number of particles over a period of time.
+4. AMCL (Adaptive Monte Carlo Localization) algorithm was used to dynamically adjust the number of particles over a period of time.
 
-7. A C++ code - navigation_goal.cpp file was used to send a target position to move_base action server.
+5. A C++ code  was used to send a target position to move_base action server.
 
-8. There launch file: robot_description.launch, udacity_world.launch and amcl.launch under launch folder.
+####  Kalman Filters and Monte Carlo Simulations are two most common algorithms for robot localization:
+1. Kalman Filters and EKF
+  Kalman filters is a algorithm that uses a series of measurements observed over time, containing statistical noise and other inaccuracies, and produces estimates of unknown variables that tend to be more accurate than those based on a single measurement alone, by estimating a joint probability distribution over the variables for each timeframe[3]. 
+  EKF (Extend Kalman Filters)  is the nonlinear version of the Kalman filter which linearizes about an estimate of the current mean and covariance. In the case of well defined transition models, the EKF has been considered the de facto standard in the theory of nonlinear state estimation, navigation systems and GPS[4].
+
+  ​
+
+2. Monte Carlo Simulations
+  Monte Carlo simulations are used to model the probability of different outcomes in a process that cannot easily be predicted due to the intervention of random variables. It is a technique used to understand the impact of risk and uncertainty in prediction and forecasting models[5].
+
+  ​
+
+3. Compare Monte Carlo Simulations vs. Extend Kalman Filters
+|    | MCL | EKF |
+| :--- | :---: | :---: |
+| Measurements | Raw Measurements | Landmarks |
+| Measurement Noise | Any | Guassian |
+| Posterior | Particles | Guassian |
+| Efficiency(memory) | OK | Good |
+| Efficency(time) | OK | Good |
+| Ease of implementation | Good | OK |
+| Resolution | OK | Good |
+| Robustness | Good | OK |
+| Memory & Resolution Control | Yes | No |
+| Global Localization | Yes | No |
+| State Space | Multimodel Discrete | Unimodel Continuous |
+
+
 
 ## Results
 ### Testing scenario:
@@ -86,12 +96,12 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 | udacity_bot | new_robot |
 | :---: | :---: |
 | <img src="images/udacity_robot_w00.PNG" width="60%" height="30%" title="Starting udacity_bot"> | <img src="images/new_robot_w01.PNG" width="50%" height="25%" title="Starting new_robot"> |
- 
+
 ### Testing results
-#### Both robots can arrive to the target position within reasonable time.
+#### Both robots navigated in map very well and could arrive to the target position within reasonable time.
 | | udacity_bot | new_robot |
 | :---: | :---: | :---: |
-| Go a head | <img src="images/udacity_robot_w01.PNG" width="60%" height="30%" title="Go udacity_bot"> | <img src="images/new_robot_w02.PNG" width="50%" height="23%" title="Go new_robot"> |
+| Go straight | <img src="images/udacity_robot_w01.PNG" width="60%" height="30%" title="Go udacity_bot"> | <img src="images/new_robot_w02.PNG" width="50%" height="23%" title="Go new_robot"> |
 | Make a turn | <img src="images/udacity_robot_w02.PNG" width="60%" height="30%" title="Make a turn udacity_bot"> | <img src="images/new_robot_w04.PNG" width="50%" height="23%" title="Make a turn new_robot"> |
 | Arrived target | <img src="images/udacity_robot_w04.PNG" width="60%" height="30%" title="Arrived target udacity_bot"> | <img src="images/new_robot_w_result.PNG" width="50%" height="23%" title="Arrived target new robot"> |
 | Average Time | 6 -7 munites | 4 -5 munites |
@@ -194,11 +204,20 @@ ROS_MASTER_URI=http://localhost:11311
 
 ## Discussion
 * Adjusting the parameter is a big challenge and time consuming job. Those parameters can be changed independently, but they are related eachother. It is impossible that one person tries all possible combination values for all parameters in limited time. A team work needs to assign for achieving the best result.
-* AMCL would'n work well for the kidnapped robot problem, when this error: "Clearing costmap to unstuck robot" happened, the robot couldn't locate its current location to continue navigating to target.
+* AMCL would'n work well for the kidnapped robot problem, when this error: "Clearing costmap to unstuck robot" happened, the robot abruptly disappeared from one location and showed up in another position.
 * A moving robot with MCL/AMCl algorithm can be used warehouse industry to move and delivery good inside the warehouse. This job and working environment have clear start and end positions. 
- 
+
 
 ## Future Work
-* Both robots started forward to dead end direction, then turned back to reverse point. The algorithm can improve to avoid this issue.
-* Adjusting and trying different parameters are very man power cost work, a database can be biult to store these test and result data to help develping a new rotot, and use Deep Learning technology to figure out and generate these parameters automatically.
+* Both robots started forward to dead end direction, then turned back to reverse point. The further study needs to involve to find out this is an algorithm issue or parameter turning problem.
+* Additional sensor can be added on back of the robot, so the robot can go back and forth without rotating to navigate to the target position.
+
+* Adjusting and trying different parameters are very man power cost work, a database can be built to store these test and result data to help developing a new robot, and use Deep Learning technology to figure out and generate these parameters automatically.
+
+## Reference
+[1] ClearPathRobotics,“Clearpath robotics home page.”https://www.clearpathrobotics.com, 2018.
+[2] Hokuyo, “Hokuyo laser scanner home page.” https://www.hokuyo-aut.jp, 2018.
+[3] Wikipedia, "Kalman filter" https://en.wikipedia.org/wiki/Kalman_filter 2018
+[4] Wikipedia, "Extended Kalman filter" https://en.wikipedia.org/wiki/Extended_Kalman_filter  2018
+[5] Investopedia, "Monte Carlo Simulation"  https://www.investopedia.com/terms/m/montecarlosimulation.asp#ixzz57zwEirv5 2018
 
