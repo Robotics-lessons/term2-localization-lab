@@ -24,9 +24,18 @@ Both robots need to use sensors such as a camera or Lidar (Light Detection and R
 A predefined maze map was provided, and a C++ navigation goal program was coded to give a navigation goal position. 
 
 ## Background
-Consider a robot with an internal map of its environment. When the robot moves around, it needs to know where it is within this map. Determining its location and rotation (more generally, the pose) by using its sensor observations is known as robot localization.
+Consider a robot with an internal map of its environment. When the robot moves around, it needs to know where it is within this map. Determining its location and rotation (more generally, the pose) by using its sensor observations is known as robot localization[4].
 
-Because the robot may not always behave in a perfectly predictable way, it generates many random guesses of where it is going to be next. These guesses are known as particles. Each particle contains a full description of a possible future state. When the robot observes the environment, it discards particles inconsistent with this observation, and generates more particles close to those that appear consistent. In the end, hopefully most particles converge to where the robot actually is[4].
+Localization involves one question: Where is the robot now? Or, robo-centrically, where am I, keeping in mind that "here" is relative to some landmark (usually the point of origin or the destination) and that you are never lost if you don't care where you are.
+
+Although a simple question, answering it isn't easy, as the answer is different depending on the characteristics of your robot. Localization techniques that work fine for one robot in one environment may not work well or at all in another environment. For example, localizations which work well in an outdoors environment may be useless indoors.
+
+All localization techniques generally provide two basic pieces of information:
+
+* what is the current location of the robot in some environment?
+* what is the robot's current orientation in that same environment?
+
+The first could be in the form of Cartesian or Polar coordinates or geographic latitude and longitude. The latter could be a combination of roll, pitch and yaw or a compass heading.
 
 The robot performance is related a running environment directly, it is so important which hardware and virtual machine configuration were used in this project.
 ### Hardware:
@@ -120,7 +129,7 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 | Arrived target | <img src="images/udacity_robot_w04.PNG" width="60%" height="24%" title="Arrived target udacity_bot"> | <img src="images/new_robot_w_result.PNG" width="50%" height="16%" title="Arrived target new robot"> |
 | Average Time | 6 -7 munites | 4 -5 munites |
 
-####  The green line is normal trajectory for both robot navigation
+####  The green route line is a trajectory for navigation of both robots. The problem is the robot needs to go up and make a cycle first in the map (Figure 1). The better navigation path is red line, it goes to the target position directly.  
 
 ####  Figure 1.   <img src="images/new_map.PNG" width="50%" height="50%" title="Maze Map">
 
@@ -202,7 +211,8 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 
 ## Future Work
 
-* Both robots started forward to dead end direction, then turned back to reverse point. The further study needs to involve to find out this is an algorithm issue or parameter turning problem.
+* Both robots started forward to dead end direction, then turned back to reverse point (Figure 1). The further study needs to involve to find out this is an algorithm issue or parameter turning problem.
+
 * Additional sensor can be added on back of the robot, so the robot can go back and forth without rotating to navigate to the target position.
 
 * Adjusting and trying different parameters are very man power cost work, a database can be built to store these test and result data to help developing a new robot, and use Deep Learning technology to figure out and generate these parameters automatically.
