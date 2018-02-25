@@ -122,7 +122,7 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 
 ####  The green line is normal trajectory for both robot navigation
 
-####  Figure 1.   <img src="images/new_map.jpg" width="50%" height="50%" title="Maze Map">
+####  Figure 1.   <img src="images/new_map.PNG" width="50%" height="50%" title="Maze Map">
 
 
 
