@@ -35,9 +35,10 @@ All localization techniques generally provide two basic pieces of information:
 * what is the current location of the robot in some environment?
 * what is the robot's current orientation in that same environment?
 
-The first could be in the form of Cartesian or Polar coordinates or geographic latitude and longitude. The latter could be a combination of roll, pitch and yaw or a compass heading.
+The first could be in the form of Cartesian or Polar coordinates or geographic latitude and longitude. The latter could be a combination of roll, pitch and yaw or a compass heading[8].
 
 The robot performance is related a running environment directly, it is so important which hardware and virtual machine configuration were used in this project.
+
 ### Hardware:
      Computer model: Surface Pro 4
 
@@ -246,3 +247,4 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 [7] Zuozhi Yang and Todd W. Neller, "A Monte Carlo Localization Assignment
 Using a Neato Vacuum with ROS" https://aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/15025/13983 2017
 
+[8] wikibooks.org , "Robotics/Navigation/Localization" https://en.m.wikibooks.org/wiki/Robotics/Navigation/Localization 
