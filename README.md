@@ -103,11 +103,18 @@ Monte Carlo simulations is an algorithm for robots to localize using a particle 
 | State Space | Multimodel Discrete | Unimodel Continuous |
 
 
+#### The Challenges
 
+The mobile robot localization problem is to determine the pose (direction and position) of the robot given the map of the environment, sensor data, a sensor error model, move- ment data, and a movement error model. It is a very basic problem of robotics since most of robot tasks require knowl- edge of the position of the robot. There are three types of lo- calization problems in increasing order of difficulty (Thrun, Burgard, and Fox 2005).
 
+#### Local Position #### 
+Tracking The initial pose of the robot is assumed to be known in this type of problem. Since the un- certainties are confined to region near the actual pose, this is considered to be a local problem.
 
+#### Global Localization 
+In contrast to local position tracking, global localization assumes no knowledge of initial pose. However, it subsumes the local problem since it uses knowl- edge gained during the process to keep tracking the position. The goal of the MCL algorithm introduced in this assignment is to perform global localization.
 
-
+#### Kidnapped Robot Problem 
+The kidnapped robot problem arises from the movement of a successfully localized robot to a different unknown position in the environment to see if it can globally localize. Thus it is more difficult than global localization problem since the robot has a strong but wrong belief in where it is. The original MCL algorithm does not have the ability to recover from kidnapping. Such failure is also often referred to as catastrophic failure.
 
 
 
@@ -129,7 +136,10 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 | Arrived target | <img src="images/udacity_robot_w04.PNG" width="60%" height="24%" title="Arrived target udacity_bot"> | <img src="images/new_robot_w_result.PNG" width="50%" height="16%" title="Arrived target new robot"> |
 | Average Time | 6 -7 munites | 4 -5 munites |
 
-####  The green route line is a trajectory for navigation of both robots. The problem is the robot needs to go up and make a cycle first in the map (Figure 1). The better navigation path is red line, it goes to the target position directly.  
+####  The navigation trajectory for both robots is a green line route, the robots arrived to the goal in the end. 
+####  The problem is that robots need to go up then make a cycle turn first in the map (Figure 1) and this cycle turn routing wasted time.
+####  The better navigation approach is followed red line, it goes to the target position directly.  
+####  Anther problem is the robot stuck on the wall in several testings. The program needs to restart to solve this issue.
 
 ####  Figure 1.   <img src="images/new_map.PNG" width="50%" height="50%" title="Maze Map">
 
@@ -231,3 +241,4 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 
 [5] wiki.ROS.ORG, "Documentation" http://wiki.ros.org/  2018
 
+[6] R. Siegwart, "Mobile Robot Localization" http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf 2002
