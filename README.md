@@ -104,11 +104,11 @@ Monte Carlo simulations is an algorithm for robots to localize using a particle 
 | State Space | Multimodel Discrete | Unimodel Continuous |
 
 
-## The Challenges[7]
+The Challenges[7]
 
 The mobile robot localization problem is to determine the pose (direction and position) of the robot given the map of the environment, sensor data, a sensor error model, move- ment data, and a movement error model. It is a very basic problem of robotics since most of robot tasks require knowl- edge of the position of the robot. There are three types of lo- calization problems in increasing order of difficulty (Thrun, Burgard, and Fox 2005).
 
-#### Local Position #### 
+#### Local Position 
 Tracking The initial pose of the robot is assumed to be known in this type of problem. Since the un- certainties are confined to region near the actual pose, this is considered to be a local problem.
 
 #### Global Localization 
