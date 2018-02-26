@@ -137,10 +137,12 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 | Arrived target | <img src="images/udacity_robot_w04.PNG" width="60%" height="24%" title="Arrived target udacity_bot"> | <img src="images/new_robot_w_result.PNG" width="50%" height="16%" title="Arrived target new robot"> |
 | Average Time | 6 -7 munites | 4 -5 munites |
 
-####  The navigation trajectory for both robots is a green line route, the robots arrived to the goal in the end. 
-####  The problem is that robots need to go up then make a cycle turn first in the map (Figure 1) and this cycle turn routing wasted time.
-####  The better navigation approach is followed red line, it goes to the target position directly.  
-####  Anther problem is the robot stuck on the wall in several testings. The program needs to restart to solve this issue.
+The navigation trajectory for both robots is a green line route, the robots arrived to the goal in the end. 
+The problem is that robots need to go up then make a cycle turn first in the map (Figure 1) and this cycle turn routing wasted time.
+The better navigation approach is followed red line, it goes to the target position directly.  
+Anther problem is the robot stuck on the wall in several testings. The program needs to restart to solve this issue.
+
+
 
 ####  Figure 1.   <img src="images/new_map.PNG" width="50%" height="50%" title="Maze Map">
 
