@@ -103,7 +103,7 @@ Monte Carlo simulations is an algorithm for robots to localize using a particle 
 | State Space | Multimodel Discrete | Unimodel Continuous |
 
 
-#### The Challenges
+## The Challenges[7]
 
 The mobile robot localization problem is to determine the pose (direction and position) of the robot given the map of the environment, sensor data, a sensor error model, move- ment data, and a movement error model. It is a very basic problem of robotics since most of robot tasks require knowl- edge of the position of the robot. There are three types of lo- calization problems in increasing order of difficulty (Thrun, Burgard, and Fox 2005).
 
@@ -212,7 +212,7 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 
 * Adjusting the parameter is a big challenge and time consuming job. Those parameters can be changed independently, but they are related eachother. It is impossible that one person tries all possible combination values for all parameters in limited time. A team work needs to assign for achieving the best result.
 
-* AMCL would'n work well for the kidnapped robot problem, when this error: "Clearing costmap to unstuck robot" happened, the robot abruptly disappeared from one location and showed up in another position.
+* AMCL would'n work well for the kidnapped robot problem, when this error: "Clearing costmap to unstuck robot" happened, the robot could be showed up at another new location, the AMCL algorithm couldn't figure out this position, the robot was stuck in the map .
 
 * A moving robot with MCL/AMCl algorithm can be used warehouse industry to move and delivery good inside the warehouse. This job and working environment have clear start and end positions. 
 
@@ -242,3 +242,7 @@ Both robots used the same map with same starting (0 0 -0.785) and target (0.995 
 [5] wiki.ROS.ORG, "Documentation" http://wiki.ros.org/  2018
 
 [6] R. Siegwart, "Mobile Robot Localization" http://www.cs.cmu.edu/~rasc/Download/AMRobots5.pdf 2002
+
+[7] Zuozhi Yang and Todd W. Neller, "A Monte Carlo Localization Assignment
+Using a Neato Vacuum with ROS" https://aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/15025/13983 2017
+
