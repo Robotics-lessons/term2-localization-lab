@@ -215,7 +215,7 @@ Anther problem is the robot stuck on the wall in several testings. The program n
 
 * Adjusting the parameter is a big challenge and time consuming job. Those parameters can be changed independently, but they are related eachother. It is impossible that one person tries all possible combination values for all parameters in limited time. A team work needs to assign for achieving the best result.
 
-* AMCL would'n work well for the kidnapped robot problem, when this error: "Clearing costmap to unstuck robot" happened, the robot could be showed up at another new location, the AMCL algorithm couldn't figure out this position, the robot was stuck in the map .
+* AMCL would'n work well for the kidnapped robot problem. The data from laser sensor can help to detect the current new location again, but it is not guarantee that robot gets correct location or takes too long to find a new position.
 
 * A moving robot with MCL/AMCl algorithm can be used warehouse industry to move and delivery good inside the warehouse. This job and working environment have clear start and end positions. 
 
@@ -228,7 +228,7 @@ Anther problem is the robot stuck on the wall in several testings. The program n
 
 * Additional sensor can be added on back of the robot, so the robot can go back and forth without rotating to navigate to the target position.
 
-* Adjusting and trying different parameters are very man power cost work, a database can be built to store these test and result data to help developing a new robot, and use Deep Learning technology to figure out and generate these parameters automatically.
+* Adjusting and trying different parameters are very man power cost work, a database can be built to store these test and result data to help adjusting the parameters in the new robots, and use Deep Learning technology to figure out and generate these parameters automatically.
 
 
 
