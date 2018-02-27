@@ -228,7 +228,7 @@ Anther problem is the robot stuck on the wall in several testings. The program n
 
 * Additional sensor can be added on back of the robot, so the robot can go back and forth without rotating to navigate to the target position.
 
-* Adjusting and trying different parameters are very man power cost work, a database can be built to store these test and result data to help adjusting the parameters in the new robots, and use Deep Learning technology to figure out and generate these parameters automatically.
+* Adjusting and trying different parameters are very man power cost work, a database can be built to store these test parameter and result timing data to help adjusting the parameters in the new robots, and use Deep Learning technology to figure out and generate these parameters automatically.
 
 
 
